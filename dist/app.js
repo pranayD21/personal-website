@@ -31,20 +31,19 @@ const artwork = {
             /_____________\            
           /_________________\          
         /_____________________\        `,
- 'research-art': "+--------------------------+\n|  EVAL LAB         [o][o]  |\n|--------------------------|\n|      .   /\\              |\n|  /\\ / \\ /  \\___/\\        |\n| /  v   v         \\___    |\n|--------------------------|\n|  [input] -> [model]       |\n|                |         |\n|  [score] <-----+          |\n+--------------------------+\n     |______________|\n    /________________\\",
- 'publications-art': "       .---------------.\n       |  .---------./| |\n       |  | IEEE   / | |\n       |  |-------/  | |\n       |  |  ==  |   | |\n       |  | ==== |   | |\n       |  |  ==  |   | |\n       |  '------|---' |\n       '---------|-----'\n   .=============|=====.\n  /_______________\\_____\\\n  \\=====================/\n   '-------------------' ",
- 'resume-art': "       __________________\n      /_________________/|\n     |  PRANAY DOGRA    | |\n     |------------------| |\n     |  [ ]  =========  | |\n     |       =======    | |\n     |  [ ]  =========  | |\n     |       =====      | |\n     |  [ ]  =========  | |\n     |__________________|/\n       /  o o o o o  \\\n      /  o o o o o o  \\\n     /_________________\\",
+ 'research-art': "      o                .    \n     .         __           \n   __ __      |  |      o   \n  |     |     |  |          \n  |     |    /    \\         \n  |-----|   /      \\        \n  | . o |  /~~~~~~~~\\       \n  | o . | /  o   .   \\      \n  |_____|(____________)     \n____________________________",
+ 'publications-art': "      ______|______         \n     |______+______|        \n   __|      |      |__      \n  |  |      |      |  |     \n  |  |  ____|____  |  |     \n  |  | |_________| |  |     \n  |  |             |  |     \n  |  |  .-------.  |  |     \n  |==|==|=======|==|==|     \n  |  |  | ----- |  |  |     \n  |  |  | ----- |  |  |     \n _|__|__'-------'__|__|_    ",
+ 'resume-art': ".--------------------------.\n| PRANAY DOGRA             |\n|--------------------------|\n|                          |\n| EDUCATION                |\n| ========  ============   |\n|                          |\n| EXPERIENCE               |\n| ============  ========   |\n| ======  ==============   |\n|                          |\n'--------------------------'",
  'links-art': "        .--------.\n        |  /www  |\n        '---+----'\n            |\n    +-------+-------+\n    |       |       |\n .--+--. .--+--. .--+--.\n | </> | | @ @ | | git |\n '-----' '-----' '-----'\n    |               |\n    +----[ hello ]--+\n\n     . . . . . . . .",
  'contact-art': "          ______________\n         /             /|\n        /   HELLO     / |\n       /_____________/  |\n       |\\           /|  |\n       | \\         / |  |\n       |  \\_______/  | /\n       |_____________|/\n\n  --  --  --  -->  @\n\n       [ new message ]",
  "projects-art": "+--------------------------+\n| ~/projects       [-][x]  |\n|--------------------------|\n| $ build                 |\n|                         |\n|   [input] --> [parse]    |\n|                  |      |\n|   [run] <---- [check]    |\n|                         |\n| > _                     |\n+--------------------------+\n     |______________|\n    /________________\\",
- "star-art": "             /\\\n            /  \\\n           /____\\\n           |    |\n           | () |\n           |    |\n           |STAR|\n          /|    |\\\n         /_|____|_\\\n           / /\\ \\\n          / /  \\ \\\n            /\\\n           .  ."
+ "star-art": "             /\\             \n            /  \\            \n           /____\\           \n           |    |           \n           | () |           \n           |    |           \n           |STAR|           \n          /|    |\\          \n         /_|____|_\\         \n            \\  /            \n             \\/             \n            .  .            \n            .  .            "
 };
 const pages = [...document.querySelectorAll('.page')];
 const links = [...document.querySelectorAll('nav a')];
 const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
 let motion = !preference.matches;
-let animation;
-let activeArt;
+const animations = new Map();
 const themeButton = document.getElementById('theme');
 const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
 function paintThemeButton() {
@@ -54,8 +53,7 @@ function paintThemeButton() {
  document.querySelector('meta[name="theme-color"]').content = dark ? '#20211e' : '#f5f1e8';
 }
 function draw(id) {
- if (animation) animation.stop();
- activeArt = id;
+ if (animations.has(id)) animations.get(id).stop();
  const element = document.getElementById(id), art = artwork[id];
  if (!element || !art) return;
  const rows = art.split('\n');
@@ -86,16 +84,29 @@ function draw(id) {
    if (id === 'projects-art') {
     put(next, 9, 4, ['|','/','-','\\'][step % 4]);
    } else if (id === 'star-art') {
-    put(next, 12, 11, step % 2 ? '*  *' : '.  .');
+    put(next, 11, 11, step % 2 ? ' .  . ' : '  ..  ');
+    put(next, 12, 11, step % 2 ? '  ..  ' : ' .  . ');
    } else if (id === 'research-art') {
-    put(next, 1, 21, step % 4 < 2 ? '[*]' : '[o]');
-    put(next, 8, 17, step % 3 === 0 ? '*' : '|');
+    put(next, 6, 4, step % 3 ? 'o' : '.');
+    put(next, 7, 5, step % 3 ? '.' : 'o');
+    put(next, 7, 15, step % 2 ? 'o' : '.');
+    put(next, 0, 6, step % 3 ? ' ' : 'o');
+    put(next, 1, 5, step % 3 ? 'o' : ' ');
    } else if (id === 'publications-art') {
-    const x = 12 + Math.round(5 * Math.sin(step / 17 * Math.PI));
-    for (let y = 3; y <= 6; y++) put(next, y, x, '/');
+    // The platen presses down, then a printed sheet feeds out.
+    if (step % 9 < 4) {
+     put(next, 4, 8, '    |    ');
+     put(next, 5, 7, ' |       | ');
+     put(next, 6, 8, '|_______|');
+    }
+    const ink = Math.min(5, Math.max(0, step - 7));
+    put(next, 9, 10, '-'.repeat(ink).padEnd(5));
+    put(next, 10, 10, '-'.repeat(Math.max(0, ink - 1)).padEnd(5));
    } else if (id === 'resume-art') {
-    put(next, 3 + 2 * (Math.floor(step / 6) % 3), 9, 'x');
-    put(next, 11, 9 + step % 6 * 2, '*');
+    const typed = Math.floor(step / 17 * 20);
+    for (const y of [5, 8, 9]) {
+     put(next, y, 2, grid[y].slice(2, 25).slice(0, typed).padEnd(23));
+    }
    } else if (id === 'links-art') {
     put(next, 4, 4 + step % 17, '*');
    } else if (id === 'contact-art') {
@@ -105,17 +116,24 @@ function draw(id) {
   }
   frames.push(grid);
  }
- animation = new AsciiPlayer({display: element, src: frames, delay: id === 'tower' ? 55 : 80});
+ animations.set(id, new AsciiPlayer({display: element, src: frames, delay: id === 'tower' ? 55 : 80}));
 }
 function route(focus=false){
  const requested=location.hash.slice(1)||'home';
- const current=pages.some(p=>p.id===requested)?requested:'home';
+ const current=requested==='publications'?'research':pages.some(p=>p.id===requested)?requested:'home';
+ animations.forEach(player => player.stop());
+ pressObserver.disconnect();
  pages.forEach(p=>p.hidden=p.id!==current);
  links.forEach(a=>{if(a.hash===`#${current}`)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
  document.title=`${current==='home'?'Engineering & Research':current==='star'?'STAR':current[0].toUpperCase()+current.slice(1)} | Pranay Dogra`;
  draw(current==='home'?'tower':`${current}-art`);
+ if(current==='research') pressObserver.observe(document.getElementById('publications-art')); 
  if(focus){document.getElementById('main').focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}
+ if(requested==='publications') document.getElementById('publications').scrollIntoView();
 }
+const pressObserver = new IntersectionObserver(entries => {
+ for (const entry of entries) if(entry.isIntersecting) { draw('publications-art'); pressObserver.unobserve(entry.target); }
+}, {threshold:0.2});
 window.addEventListener('hashchange',()=>route(true));
 themeButton.addEventListener('click', () => {
  const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
@@ -128,7 +146,7 @@ systemTheme.addEventListener('change', event => {
  try { saved = localStorage.getItem('pd-theme'); } catch {}
  if (!saved) { document.documentElement.dataset.theme = event.matches ? 'dark' : 'light'; paintThemeButton(); }
 });
-preference.addEventListener('change', event => { motion = !event.matches; draw(activeArt); });
+preference.addEventListener('change', event => { motion = !event.matches; animations.forEach((player,id) => draw(id)); });
 document.querySelectorAll('.replay').forEach(button=>button.addEventListener('click',()=>draw(button.dataset.art)));
 document.getElementById('copy-email').addEventListener('click',async()=>{
  const status=document.getElementById('copy-status');
