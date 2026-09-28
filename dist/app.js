@@ -31,45 +31,11 @@ const artwork = {
             /_____________\            
           /_________________\          
         /_____________________\        `,
- 'research-art':String.raw`  [ prompt ]
-       |
-       v
-  +---------+    +-------+
-  |  model  |--->| evals |
-  +---------+    +-------+
-                      |
-                  [ ? ]`,
- 'publications-art':String.raw`       ___________
-  ____/     |     \____
- /  __  __  |  __  __  \
-|   __  __  |  __  __   |
-|   __  __  |  __  __   |
-|___________|___________|
- \__________|__________/`,
- 'resume-art':String.raw`     .------------.
-     | PRANAY     |
-     |------------|
-     | ====  ==== |
-     | ========== |
-     | ========   |
-     | ====       |
-     '------------'`,
- 'links-art':String.raw`         [ me ]
-          / | \
-         /  |  \
-      [a]  [b]  [c]
-       |         |
-      [d]       [e]
-
-       connected.`,
- 'contact-art':String.raw`       _____________
-      /____________/|
-     |\           / |
-     | \   hello /  |
-     |  \_______/   |
-     |______________|
-
-          -> @`
+ 'research-art': "+--------------------------+\n|  EVAL LAB         [o][o]  |\n|--------------------------|\n|      .   /\\              |\n|  /\\ / \\ /  \\___/\\        |\n| /  v   v         \\___    |\n|--------------------------|\n|  [input] -> [model]       |\n|                |         |\n|  [score] <-----+          |\n+--------------------------+\n     |______________|\n    /________________\\",
+ 'publications-art': "       .---------------.\n       |  .---------./| |\n       |  | IEEE   / | |\n       |  |-------/  | |\n       |  |  ==  |   | |\n       |  | ==== |   | |\n       |  |  ==  |   | |\n       |  '------|---' |\n       '---------|-----'\n   .=============|=====.\n  /_______________\\_____\\\n  \\=====================/\n   '-------------------' ",
+ 'resume-art': "       __________________\n      /_________________/|\n     |  PRANAY DOGRA    | |\n     |------------------| |\n     |  [ ]  =========  | |\n     |       =======    | |\n     |  [ ]  =========  | |\n     |       =====      | |\n     |  [ ]  =========  | |\n     |__________________|/\n       /  o o o o o  \\\n      /  o o o o o o  \\\n     /_________________\\",
+ 'links-art': "        .--------.\n        |  /www  |\n        '---+----'\n            |\n    +-------+-------+\n    |       |       |\n .--+--. .--+--. .--+--.\n | </> | | @ @ | | git |\n '-----' '-----' '-----'\n    |               |\n    +----[ hello ]--+\n\n     . . . . . . . .",
+ 'contact-art': "          ______________\n         /             /|\n        /   HELLO     / |\n       /_____________/  |\n       |\\           /|  |\n       | \\         / |  |\n       |  \\_______/  | /\n       |_____________|/\n\n  --  --  --  -->  @\n\n       [ new message ]"
 };
 const pages = [...document.querySelectorAll('.page')];
 const links = [...document.querySelectorAll('nav a')];
@@ -108,6 +74,29 @@ function draw(id) {
   setCell(14, 21, ' ');
   setCell(15, 19, '|');
   for (let i = 0; i < 7; i++) frames.push(moved);
+  frames.push(grid);
+ }
+ if (id !== 'tower') {
+  const put = (frame, y, x, text) => { frame[y] = frame[y].slice(0, x) + text + frame[y].slice(x + text.length); };
+  // Each illustration has a brief motion sequence after its entrance.
+  for (let step = 0; step < 18; step++) {
+   const next = [...grid];
+   if (id === 'research-art') {
+    put(next, 1, 21, step % 4 < 2 ? '[*]' : '[o]');
+    put(next, 8, 17, step % 3 === 0 ? '*' : '|');
+   } else if (id === 'publications-art') {
+    const x = 12 + Math.round(5 * Math.sin(step / 17 * Math.PI));
+    for (let y = 3; y <= 6; y++) put(next, y, x, '/');
+   } else if (id === 'resume-art') {
+    put(next, 3 + 2 * (Math.floor(step / 6) % 3), 9, 'x');
+    put(next, 11, 9 + step % 6 * 2, '*');
+   } else if (id === 'links-art') {
+    put(next, 4, 4 + step % 17, '*');
+   } else if (id === 'contact-art') {
+    put(next, 9, 2 + step, '>');
+   }
+   frames.push(next);
+  }
   frames.push(grid);
  }
  animation = new AsciiPlayer({display: element, src: frames, delay: id === 'tower' ? 55 : 80});
