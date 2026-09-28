@@ -18,3 +18,7 @@ There are no build dependencies. Serve `dist` with any static host. Navigation u
 Animations respect reduced-motion preferences. The light/dark toggle stores only the chosen theme in local storage. With JavaScript disabled, all sections remain readable.
 
 ASCII frame playback adapts [AnimASCII.js](https://github.com/TheGreatRambler/AnimASCII.js) (MIT) to render fixed-width text grids. The license is included in `dist/vendor/AnimASCII-LICENSE.txt`. The Campanile illustration is original.
+
+## Public hosting
+
+The public website uses free GitHub Pages. Push changes in `dist/` to `main` to publish automatically. See [HOSTING.md](HOSTING.md) for domain pricing, purchase steps, and DNS records.
