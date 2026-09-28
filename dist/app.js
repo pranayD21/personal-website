@@ -35,7 +35,9 @@ const artwork = {
  'publications-art': "       .---------------.\n       |  .---------./| |\n       |  | IEEE   / | |\n       |  |-------/  | |\n       |  |  ==  |   | |\n       |  | ==== |   | |\n       |  |  ==  |   | |\n       |  '------|---' |\n       '---------|-----'\n   .=============|=====.\n  /_______________\\_____\\\n  \\=====================/\n   '-------------------' ",
  'resume-art': "       __________________\n      /_________________/|\n     |  PRANAY DOGRA    | |\n     |------------------| |\n     |  [ ]  =========  | |\n     |       =======    | |\n     |  [ ]  =========  | |\n     |       =====      | |\n     |  [ ]  =========  | |\n     |__________________|/\n       /  o o o o o  \\\n      /  o o o o o o  \\\n     /_________________\\",
  'links-art': "        .--------.\n        |  /www  |\n        '---+----'\n            |\n    +-------+-------+\n    |       |       |\n .--+--. .--+--. .--+--.\n | </> | | @ @ | | git |\n '-----' '-----' '-----'\n    |               |\n    +----[ hello ]--+\n\n     . . . . . . . .",
- 'contact-art': "          ______________\n         /             /|\n        /   HELLO     / |\n       /_____________/  |\n       |\\           /|  |\n       | \\         / |  |\n       |  \\_______/  | /\n       |_____________|/\n\n  --  --  --  -->  @\n\n       [ new message ]"
+ 'contact-art': "          ______________\n         /             /|\n        /   HELLO     / |\n       /_____________/  |\n       |\\           /|  |\n       | \\         / |  |\n       |  \\_______/  | /\n       |_____________|/\n\n  --  --  --  -->  @\n\n       [ new message ]",
+ "projects-art": "+--------------------------+\n| ~/projects       [-][x]  |\n|--------------------------|\n| $ build                 |\n|                         |\n|   [input] --> [parse]    |\n|                  |      |\n|   [run] <---- [check]    |\n|                         |\n| > _                     |\n+--------------------------+\n     |______________|\n    /________________\\",
+ "star-art": "             /\\\n            /  \\\n           /____\\\n           |    |\n           | () |\n           |    |\n           |STAR|\n          /|    |\\\n         /_|____|_\\\n           / /\\ \\\n          / /  \\ \\\n            /\\\n           .  ."
 };
 const pages = [...document.querySelectorAll('.page')];
 const links = [...document.querySelectorAll('nav a')];
@@ -81,7 +83,11 @@ function draw(id) {
   // Each illustration has a brief motion sequence after its entrance.
   for (let step = 0; step < 18; step++) {
    const next = [...grid];
-   if (id === 'research-art') {
+   if (id === 'projects-art') {
+    put(next, 9, 4, ['|','/','-','\\'][step % 4]);
+   } else if (id === 'star-art') {
+    put(next, 12, 11, step % 2 ? '*  *' : '.  .');
+   } else if (id === 'research-art') {
     put(next, 1, 21, step % 4 < 2 ? '[*]' : '[o]');
     put(next, 8, 17, step % 3 === 0 ? '*' : '|');
    } else if (id === 'publications-art') {
@@ -106,7 +112,7 @@ function route(focus=false){
  const current=pages.some(p=>p.id===requested)?requested:'home';
  pages.forEach(p=>p.hidden=p.id!==current);
  links.forEach(a=>{if(a.hash===`#${current}`)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
- document.title=`${current==='home'?'Engineering & Research':current[0].toUpperCase()+current.slice(1)} | Pranay Dogra`;
+ document.title=`${current==='home'?'Engineering & Research':current==='star'?'STAR':current[0].toUpperCase()+current.slice(1)} | Pranay Dogra`;
  draw(current==='home'?'tower':`${current}-art`);
  if(focus){document.getElementById('main').focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}
 }
