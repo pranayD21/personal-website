@@ -1,36 +1,36 @@
 'use strict';
 const artwork = {
- tower: String.raw`                    ^
-                   /|\
-                  / | \
-                 /__|__\
-                 |  :  |
-                /|__|__|\
-               /_________\
-               |  _   _  |
-               | | | | | |
-               | |_| |_| |
-               |  _   _  |
-               | | | | | |
-               | |_| |_| |
-              _|_________|_
-              |  .-----.  |
-              | /   |   \ |
-              | |   +-- | |
-              | \       / |
-              |  '-----'  |
-              |-----------|
-              | |       | |
-              | |       | |
-              | |       | |
-              | |       | |
-              | |       | |
-              | |       | |
-              | |       | |
-              | |  ___  | |
-             _|_|_|   |_|_|_
-         ___/_______________\___
-     ___/_______________________\___`,
+ tower: String.raw`                   ^                   
+                  /|\                  
+                 / | \                 
+               /___|___\               
+               |   :   |               
+               |_______|               
+              /_________\              
+              |  _   _  |              
+              | | | | | |              
+              | | | | | |              
+              | |_| |_| |              
+              |_________|              
+              | .-----. |              
+              |/   |   \|              
+              ||   +-- ||              
+              |\       /|              
+              | '-----' |              
+              |_________|              
+              | |     | |              
+              | |     | |              
+              | |     | |              
+              | |     | |              
+              | |     | |              
+              | |     | |              
+              | |     | |              
+              | |     | |              
+              | | ___ | |              
+              |_||   ||_|              
+            /_____________\            
+          /_________________\          
+        /_____________________\        `,
  'research-art':String.raw`  [ prompt ]
        |
        v
@@ -74,33 +74,43 @@ const artwork = {
 const pages = [...document.querySelectorAll('.page')];
 const links = [...document.querySelectorAll('nav a')];
 const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
-let stored;
-try { stored = localStorage.getItem('pd-motion'); } catch {}
-let motion = !preference.matches && stored !== 'off';
-let frame;
+let motion = !preference.matches;
+let animation;
 let activeArt;
-const motionButton = document.getElementById('motion');
-function paintMotionButton(){motionButton.textContent=`Motion: ${motion ? 'on' : 'off'}`;motionButton.setAttribute('aria-pressed',String(!motion));}
-function draw(id){
- cancelAnimationFrame(frame);
- activeArt=id;
- const element=document.getElementById(id), art=artwork[id];
- if(!element)return;
- if(!motion){element.textContent=art;return;}
- const started=performance.now(), duration=id==='tower'?1500:850;
- function tick(now){
-  const progress=Math.min((now-started)/duration,1);
-  const lines=art.split('\n');
-  if(id==='tower'){
-   const visible=Math.ceil(progress*lines.length);
-   element.textContent=lines.map((line,i)=>i>=lines.length-visible?line:' '.repeat(line.length)).join('\n');
-  }else{
-   const visible=Math.ceil(progress*art.length);
-   element.textContent=[...art].map((char,i)=>i<visible||char==='\n'?char:' ').join('');
-  }
-  if(progress<1)frame=requestAnimationFrame(tick);
+const themeButton = document.getElementById('theme');
+const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+function paintThemeButton() {
+ const dark = document.documentElement.dataset.theme === 'dark';
+ themeButton.textContent = dark ? '[ light ]' : '[ dark ]';
+ themeButton.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} mode`);
+ document.querySelector('meta[name="theme-color"]').content = dark ? '#20211e' : '#f5f1e8';
+}
+function draw(id) {
+ if (animation) animation.stop();
+ activeArt = id;
+ const element = document.getElementById(id), art = artwork[id];
+ if (!element || !art) return;
+ const rows = art.split('\n');
+ const width = Math.max(...rows.map(row => row.length));
+ const grid = rows.map(row => row.padEnd(width));
+ if (!motion) { element.textContent = grid.join('\n'); return; }
+ const frames = [];
+ for (let count = 0; count <= grid.length; count++) {
+  frames.push(grid.map((row, y) => (id === 'tower' ? y >= grid.length - count : y < count) ? row : ' '.repeat(width)));
  }
- frame=requestAnimationFrame(tick);
+ if (id === 'tower') {
+  // Hold the completed tower, then move the clock hand once.
+  for (let i = 0; i < 5; i++) frames.push([...grid]);
+  const moved = [...grid];
+  const setCell = (row, col, char) => { moved[row] = moved[row].slice(0, col) + char + moved[row].slice(col + 1); };
+  setCell(13, 19, ' ');
+  setCell(14, 20, ' ');
+  setCell(14, 21, ' ');
+  setCell(15, 19, '|');
+  for (let i = 0; i < 7; i++) frames.push(moved);
+  frames.push(grid);
+ }
+ animation = new AsciiPlayer({display: element, src: frames, delay: id === 'tower' ? 55 : 80});
 }
 function route(focus=false){
  const requested=location.hash.slice(1)||'home';
@@ -112,12 +122,22 @@ function route(focus=false){
  if(focus){document.getElementById('main').focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}
 }
 window.addEventListener('hashchange',()=>route(true));
-motionButton.addEventListener('click',()=>{motion=!motion;try{localStorage.setItem('pd-motion',motion?'on':'off');}catch{}paintMotionButton();draw(activeArt);});
-preference.addEventListener('change',e=>{motion=!e.matches;paintMotionButton();draw(activeArt);});
+themeButton.addEventListener('click', () => {
+ const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+ document.documentElement.dataset.theme = theme;
+ try { localStorage.setItem('pd-theme', theme); } catch {}
+ paintThemeButton();
+});
+systemTheme.addEventListener('change', event => {
+ let saved;
+ try { saved = localStorage.getItem('pd-theme'); } catch {}
+ if (!saved) { document.documentElement.dataset.theme = event.matches ? 'dark' : 'light'; paintThemeButton(); }
+});
+preference.addEventListener('change', event => { motion = !event.matches; draw(activeArt); });
 document.querySelectorAll('.replay').forEach(button=>button.addEventListener('click',()=>draw(button.dataset.art)));
 document.getElementById('copy-email').addEventListener('click',async()=>{
  const status=document.getElementById('copy-status');
  try{await navigator.clipboard.writeText('pranay.dogra@berkeley.edu');status.textContent='Email copied.';}catch{status.textContent='Select the email address above to copy it, or click it to open your email app.';}
 });
 document.getElementById('year').textContent=new Date().getFullYear();
-paintMotionButton();route();
+paintThemeButton();route();
