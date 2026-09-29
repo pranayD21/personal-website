@@ -21,3 +21,4 @@ nav{flex-wrap:wrap;gap:16px 27px}nav a[aria-current]:after{bottom:-7px}.star-sum
 .research-publications{margin-top:42px}.research-publications>.page-heading{padding-top:32px}.research-publications>.page-heading h2{font-size:32px;margin:0}.research-publications .publication{padding-bottom:0}
 
 @media(max-width:520px){header{gap:16px}.wordmark{font-size:16px}.header-controls{gap:16px}}
+@media(max-width:520px){nav a:nth-child(3) .link-tip,nav a:nth-child(4) .link-tip{left:auto;right:0}}
