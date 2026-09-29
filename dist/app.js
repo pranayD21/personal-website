@@ -125,7 +125,7 @@ function route(focus=false){
  pressObserver.disconnect();
  pages.forEach(p=>p.hidden=p.id!==current);
  links.forEach(a=>{if(a.hash===`#${current}`)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
- document.title=`${current==='home'?'Engineering & Research':current==='star'?'STAR':current[0].toUpperCase()+current.slice(1)} | Pranay Dogra`;
+ document.title='Pranay Dogra';
  draw(current==='home'?'tower':`${current}-art`);
  if(current==='research') pressObserver.observe(document.getElementById('publications-art')); 
  if(focus){document.getElementById('main').focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}
