@@ -22,3 +22,37 @@ nav{flex-wrap:wrap;gap:16px 27px}nav a[aria-current]:after{bottom:-7px}.star-sum
 
 @media(max-width:520px){header{gap:16px}.wordmark{font-size:16px}.header-controls{gap:16px}}
 @media(max-width:520px){nav a:nth-child(3) .link-tip,nav a:nth-child(4) .link-tip{left:auto;right:0}}
+
+/* Phone layouts: readable text, reachable controls, and contained links. */
+@media(max-width:520px){
+ header{height:auto;min-height:88px;gap:12px}
+ .header-controls{gap:10px}
+ .header-controls a,.header-controls button,.wordmark{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+ .listening{min-width:36px}
+ nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 12px;padding:12px 0}
+ nav a{display:flex;align-items:center;min-height:44px;font-size:14px}
+ nav a[aria-current]:after{bottom:3px;right:auto;width:28px}
+ nav a .link-tip{max-width:180px}
+ nav a:nth-child(3n) .link-tip{left:auto;right:0}
+ nav a:nth-child(3n + 1) .link-tip{left:0;right:auto}
+ main{min-height:0}
+ .page-heading{padding:32px 0 24px;gap:24px}
+ .tab-art{align-self:center;margin:0;max-width:100%}
+ .tab-art .small-art{max-width:100%;font-size:clamp(10px,3.2vw,12px)}
+ .replay,.text-button{min-height:44px;min-width:44px}
+ .bio,.entry p,.legal p,.note p:last-child{font-size:15px}
+ .inline-link{display:inline-block;min-height:44px;padding:10px 0;font-size:14px}
+ .button{min-height:44px;font-size:14px}
+ .resume-actions{flex-wrap:wrap;gap:8px 20px}
+ .resume-actions .link-tip{left:auto;right:0}
+ .contact-email{font-size:clamp(14px,4.1vw,18px);overflow-wrap:anywhere;min-height:44px;padding:8px 0}
+ .link-list>a{gap:16px;font-size:23px}
+ .link-list>a>span:first-child{min-width:0;overflow-wrap:anywhere}
+ footer{gap:4px 18px;padding-bottom:24px}
+ footer a{display:inline-flex;align-items:center;min-height:44px;font-size:13px!important;overflow-wrap:anywhere}
+ footer>a:first-of-type{margin-top:8px}
+}
+@media(hover:none){.link-tip,.listening-tip{display:none!important}}
+@media(max-width:520px){
+ .has-tip>.link-tip{position:fixed!important;left:50%!important;right:auto!important;top:auto!important;bottom:16px!important;transform:translateX(-50%);max-width:calc(100vw - 48px);white-space:normal;text-align:center}
+}
