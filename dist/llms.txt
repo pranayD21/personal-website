@@ -1,0 +1,9 @@
+# Pranay Dogra
+
+> UC Berkeley engineering student. Research, software projects, publications, and experience.
+
+## Portfolio
+
+- [Complete portfolio](https://pranaydogra.com/index.md): Text of every section, including research, projects, STAR, experience, publications, links, contact, and site policies.
+- [Resume PDF](https://pranaydogra.com/Pranay_Dogra_Resume.pdf): Full resume.
+- [Website](https://pranaydogra.com/): Interactive portfolio with section navigation.
