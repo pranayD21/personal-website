@@ -1,6 +1,6 @@
 # Hosting and domain setup
 
-The public site uses GitHub Pages: https://pranayd21.github.io/personal-website/
+The public site uses GitHub Pages: https://pranaydogra.com/
 
 Hosting and HTTPS cost $0. Changes pushed to `main` under `dist/` deploy automatically through the Deploy website workflow. No hosting subscription or paid SSL certificate is needed.
 
@@ -16,7 +16,7 @@ Hosting and HTTPS cost $0. Changes pushed to `main` under `dist/` deploy automat
 | A | @ | 185.199.111.153 |
 | CNAME | www | pranayd21.github.io |
 
-Porkbun manages DNS; GitHub Pages serves the website. HTTPS certificate provisioning is pending. Once GitHub issues the certificate, enable Enforce HTTPS in https://github.com/pranayD21/personal-website/settings/pages.
+Porkbun manages DNS; GitHub Pages serves the website. HTTPS was enabled and verified on September 29, 2026. Both HTTP and the www address redirect to https://pranaydogra.com/. GitHub manages the certificate.
 
 The original GitHub Pages address redirects to the custom domain. Future changes pushed to `main` under `dist/` continue to deploy automatically.
 
