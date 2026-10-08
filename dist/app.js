@@ -50,7 +50,7 @@ function paintThemeButton() {
  const dark = document.documentElement.dataset.theme === 'dark';
  themeButton.textContent = dark ? '[ light ]' : '[ dark ]';
  themeButton.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} mode`);
- document.querySelector('meta[name="theme-color"]').content = dark ? '#20211e' : '#f5f1e8';
+ document.querySelector('meta[name="theme-color"]').content = dark ? '#101e33' : '#f0eadc';
 }
 function draw(id) {
  if (animations.has(id)) animations.get(id).stop();

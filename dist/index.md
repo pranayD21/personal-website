@@ -4,7 +4,7 @@
 
 Engineering student at UC Berkeley.
 
-I study EECS and Industrial Engineering & Operations Research. I’m exploring AI safety evaluations, token-efficient AI systems, and prediction markets.
+I study EECS and Industrial Engineering & Operations Research. My current focus is mechanistic interpretability and tokenomics.
 
 [What I’m working on ↗](https://pranaydogra.com/#research)
 
@@ -30,7 +30,7 @@ I built a 1,020-prompt benchmark to study bias in model decisions across healthc
 
 ### Research interests
 
-I’m interested in model evaluations and benchmarks for AI safety. I’m also exploring token-efficient AI systems and prediction markets.
+My current interests are mechanistic interpretability and tokenomics. I’m also interested in AI safety evaluations, token-efficient AI systems, and prediction markets.
 
 ### Publications
 
