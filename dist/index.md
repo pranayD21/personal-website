@@ -151,7 +151,7 @@ TOOLS I USE
 
 Python · C++ · C · Java · PyTorch · Git · Ollama · Kubernetes
 
-Research roles are listed in [Research](https://pranaydogra.com/#research). The downloadable PDF predates these latest projects.
+Research roles are listed in [Research](https://pranaydogra.com/#research).
 
 ## Links
 
