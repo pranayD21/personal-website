@@ -44,6 +44,22 @@ A benchmark examining model decisions across race, gender, age, socioeconomic st
 
 ## Projects
 
+OCT 2026 / YC HACKATHON
+
+### Agent Task Marketplace
+
+HANDOFF lets agents delegate tasks to peer machines running local models through MCP. I built encrypted task delivery, independent result review, durable task recovery, and test-mode Stripe payments.
+
+[View project on GitHub ↗](https://github.com/pranayD21/AgentTaskMarketplace)
+
+STAR / IN REVIEW
+
+### Flight-computer self-tests
+
+A portable C coordinator with five SPI device checks, bounded retries, and heartbeat callbacks. Host tests cover corrupt replies, timeouts, and CRC validation; hardware integration is pending.
+
+[View contribution on GitHub ↗](https://github.com/calstar/STAR/pull/138)
+
 IN PROGRESS
 
 ### LLM Token Efficiency
@@ -79,11 +95,21 @@ UC Berkeley’s student-run rocketry team. Students design, build, and test rock
 - 27,326 ft · Caldera flight altitude, 2024
 - 6th place · IREC 2024, 30,000-foot category[Team results ↗](https://crowdfund.berkeley.edu/project/43553)
 
+OCT 2026 / IN REVIEW
+
+### Flight-computer self-tests
+
+I built a portable C self-test coordinator and datasheet-backed SPI checks for the ISM330DHCX, H3LIS100DL, MS5611, W5500, and SX1262. It schedules probes, limits retries, and reports required and optional device results. Host tests cover CRC validation, timeouts, corrupt replies, and reset behavior. STM32 integration and hardware testing are pending.
+
+[View self-test contribution ↗](https://github.com/calstar/STAR/pull/138)
+
 MY WORK / AUG 2026–PRESENT
 
 ### Data acquisition software
 
-I built C++ support for an environmental sensor board, parsing UDP packets for temperature, humidity, and pressure telemetry. I integrated the board into STAR’s configuration, data streams, and monitoring interface.
+I built C++ support for an environmental sensor board, parsing UDP packets for temperature, humidity, and pressure telemetry. I integrated the board into STAR’s configuration, data streams, and monitoring interface. Tested in simulation; physical-board validation is pending.
+
+[View DAQ contribution ↗](https://github.com/calstar/STAR/pull/76)
 
 ## Resume
 
@@ -99,7 +125,7 @@ AUG 2026–PRESENT
 
 ### Software Engineer · Berkeley STAR
 
-Built C++ support for environmental sensor telemetry, from UDP packet parsing to the data acquisition interface.
+Built C++ environmental sensor telemetry and a portable C flight-computer self-test coordinator with five SPI device checks. Self-tests are host-tested; hardware integration is pending.
 
 NOV 2024–AUG 2026
 
@@ -113,15 +139,23 @@ SUMMERS 2024 & 2025
 
 Created a balanced dataset of 40,000+ videos and images to reduce bias in an emotion-recognition model. Integrated the model into robotics applications.
 
+SELECTED PROJECT / OCT 2026
+
+### Agent Task Marketplace
+
+Built HANDOFF at Y Combinator’s Make Something Agents Want hackathon: an MCP marketplace for tasks executed by local models, with encrypted results, independent review, and test-mode payments.
+
+[View project on GitHub ↗](https://github.com/pranayD21/AgentTaskMarketplace)
+
 TOOLS I USE
 
 Python · C++ · C · Java · PyTorch · Git · Ollama · Kubernetes
 
-Research roles are listed in [Research](https://pranaydogra.com/#research). The PDF includes the full details.
+Research roles are listed in [Research](https://pranaydogra.com/#research). The downloadable PDF predates these latest projects.
 
 ## Links
 
-[GitHubCode and experiments↗](https://github.com/pranayD21)[LinkedInExperience and connections↗](https://www.linkedin.com/in/pranay-dogra-896b35214/)[BabelContracts as executable state machines↗](https://github.com/neelsck/DDKT)[SLM CascadeA small-model-first inbox agent router↗](https://github.com/pranayD21/slm-agent-router)[IEEE publicationQuantifying bias in agentic LLMs↗](https://ieeexplore.ieee.org/document/10601938)[CueLens in the Midpeninsula PostThe story behind the project↗](https://midpenpost.org/2025/11/18/subtitles-but-for-facial-expressions-a-bellarmine-high-seniors-journey-innovating-to-empower-individuals-on-the-autism-spectrum/)
+[Agent Task MarketplaceAgent-to-agent tasks on local models↗](https://github.com/pranayD21/AgentTaskMarketplace)[STAR flight-computer self-testsPortable C checks and host tests↗](https://github.com/calstar/STAR/pull/138)[GitHubCode and experiments↗](https://github.com/pranayD21)[LinkedInExperience and connections↗](https://www.linkedin.com/in/pranay-dogra-896b35214/)[BabelContracts as executable state machines↗](https://github.com/neelsck/DDKT)[SLM CascadeA small-model-first inbox agent router↗](https://github.com/pranayD21/slm-agent-router)[IEEE publicationQuantifying bias in agentic LLMs↗](https://ieeexplore.ieee.org/document/10601938)[CueLens in the Midpeninsula PostThe story behind the project↗](https://midpenpost.org/2025/11/18/subtitles-but-for-facial-expressions-a-bellarmine-high-seniors-journey-innovating-to-empower-individuals-on-the-autism-spectrum/)
 
 ## Contact
 
