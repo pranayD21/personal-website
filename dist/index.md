@@ -48,9 +48,7 @@ NOV 2026 / HACKATHON
 
 ### Assurance
 
-An autonomous, agent-run patient advocacy firm that files medical and workplace-injury insurance claims and disputes denials with the insurer. A customer verifies a phone number and gets an onboarding call; the transcript opens a case with its own persistent advocate, while CEO, Front Desk, Case Reviewer, Knowledge, Growth, and Finance agents run the company around it.
-
-I built most of the backend: persistent per-case agent sessions on Naïve, phone-first sign-in and onboarding calls, authorized insurer email with duplicate-send protection, source-linked evidence and outcome records, and recovery for interrupted hires and sessions. Our growth agent found our first real user on Reddit; 65 test files pass against real Postgres.
+An agent-run patient advocacy firm that files medical and workplace-injury insurance claims and disputes denials with the insurer. Each case gets its own persistent advocate, and a team of company agents handles intake, review, and growth.
 
 [View project on GitHub ↗](https://github.com/pranayD21/autonomouscompany)
 
@@ -169,7 +167,7 @@ SELECTED PROJECT / NOV 2026
 
 ### Assurance
 
-Co-built an autonomous, agent-run insurance claims advocacy firm at a hackathon. I built most of the backend: persistent per-case agents, phone-first onboarding, authorized insurer email, and evidence-backed outcome records. Its growth agent acquired our first real user.
+Co-built an agent-run insurance claims advocacy firm at a hackathon, with a persistent advocate per case and company agents for intake, review, and growth.
 
 [View project on GitHub ↗](https://github.com/pranayD21/autonomouscompany)
 
