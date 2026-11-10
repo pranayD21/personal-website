@@ -10,7 +10,7 @@ I study EECS and Industrial Engineering & Operations Research. My current focus 
 
 ## Research
 
-CURRENT / SEP 2026–PRESENT
+SEP 2026–PRESENT / CURRENT
 
 ### Dana Carney Lab
 
@@ -18,7 +18,7 @@ UC Berkeley Haas School of Business · Undergraduate researcher
 
 I develop Python and PyTorch pipelines for multimodal behavioral analysis, extracting facial, vocal, and paralinguistic features from video and audio. These measures support the lab’s research on political ideology, race, and socioeconomic status.
 
-PREVIOUS / SUMMER 2023
+SUMMER 2023 / BERKELEY AI RESEARCH
 
 ### Evaluating bias in LLM decisions
 
@@ -50,7 +50,7 @@ NOV 2026 / HACKATHON
 
 An agent-run patient advocacy firm that files medical and workplace-injury insurance claims and disputes denials with the insurer. Each case gets its own persistent advocate, and a team of company agents handles intake, review, and growth.
 
-[View project on GitHub ↗](https://github.com/pranayD21/autonomouscompany)
+[View on GitHub ↗](https://github.com/pranayD21/autonomouscompany)
 
 OCT 2026 / YC HACKATHON
 
@@ -58,39 +58,39 @@ OCT 2026 / YC HACKATHON
 
 HANDOFF lets agents delegate tasks to peer machines running local models through MCP. I built encrypted task delivery, independent result review, durable task recovery, and test-mode Stripe payments.
 
-[View project on GitHub ↗](https://github.com/pranayD21/AgentTaskMarketplace)
+[View on GitHub ↗](https://github.com/pranayD21/AgentTaskMarketplace)
 
-STAR / OCT–NOV 2026
+OCT–NOV 2026 / BERKELEY STAR
 
 ### Flight-computer firmware
 
 Portable C self-tests for five SPI devices with a bounded 29-second scan, plus a health task and watchdog that survive Idle sleep, a start-up self-test radio frame, and a W5500 Ethernet path for DAQ telemetry. Host-tested; hardware validation is pending.
 
-[Read about my STAR work](https://pranaydogra.com/#star)
+[Read more on the STAR page ↗](https://pranaydogra.com/#star)
 
-IN PROGRESS
+SEP 2026 / IN PROGRESS
 
 ### LLM Token Efficiency
 
 Exploring how model routing, caching, and context management affect cost and answer quality. Includes a literature review and two local prototypes; live-model evaluation is next.
 
-[View project on GitHub ↗](https://github.com/pranayD21/llm-token-efficiency)
+[View on GitHub ↗](https://github.com/pranayD21/llm-token-efficiency)
 
-LLMS / STATE MACHINES
+MAY 2026 / TEAM PROJECT
 
 ### Babel
 
 I built a system that turns legal agreements into executable state machines for validation and scenario testing. Multiple agents share context and use validation feedback to refine the output.
 
-[View Babel on GitHub ↗](https://github.com/neelsck/DDKT)
+[View on GitHub ↗](https://github.com/neelsck/DDKT)
 
-LLMS / TOKEN EFFICIENCY
+JUL 2026 / PERSONAL PROJECT
 
 ### SLM Cascade
 
 An inbox agent router that starts with small local models and escalates when needed. I benchmarked latency and token usage across Ollama, OpenAI, and Claude.
 
-[View SLM Cascade on GitHub ↗](https://github.com/pranayD21/slm-agent-router)
+[View on GitHub ↗](https://github.com/pranayD21/slm-agent-router)
 
 ## STAR
 
@@ -109,7 +109,7 @@ NOV 2026 / IN REVIEW
 
 A health task samples all seven ADC1 inputs (battery, main current, continuity, and altimeter current) into a fixed 25-byte log record at 10 Hz once armed. Sensor, GNSS, and storage workers check in, and the independent watchdog is refreshed only when every running worker has, including through 10-second Stop-mode sleeps. The board reports its reset cause and sends a self-test frame over the radio before its first heartbeat, with three bounded attempts. All 26 flight test stages pass; I broke 13 guarded behaviors one at a time to confirm each turns a test red.
 
-[View health and watchdog work ↗](https://github.com/calstar/STAR/pull/179)
+[View PR #179 ↗](https://github.com/calstar/STAR/pull/179)
 
 NOV 2026 / IN REVIEW
 
@@ -117,7 +117,7 @@ NOV 2026 / IN REVIEW
 
 The flight computer could identify its W5500 Ethernet chip but had no data path. I added a bounded UDP driver and a separate network task that sends the DAQ’s existing heartbeat and sensor packets. It discovers the ground server, ignores invalid and actuator packets, drops stale samples, and recovers from link, SPI, and cable failures. Six suites pass under ASan and UBSan, and the STM32H723 build fits in 73 KB of flash. Networking stays disabled until addressing is signed off.
 
-[View Ethernet transport ↗](https://github.com/calstar/STAR/pull/177)
+[View PR #177 ↗](https://github.com/calstar/STAR/pull/177)
 
 OCT–NOV 2026 / MERGED
 
@@ -125,15 +125,15 @@ OCT–NOV 2026 / MERGED
 
 I built a portable C self-test coordinator and datasheet-backed SPI checks for the ISM330DHCX, H3LIS100DL, MS5611, W5500, and SX1262. It schedules probes, limits retries, and reports required and optional device results. A follow-up bounds the whole scan to 29 seconds, marks stalled devices as timed out so the board can still reach Idle, and applies the board requirements the hardware lead confirmed. I also documented how the checks fit the new radio and IMU drivers, including a reproduced IMU reset-timeout bug.
 
-[View self-test contribution ↗](https://github.com/calstar/STAR/pull/138) [View bounded scan ↗](https://github.com/calstar/STAR/pull/147)
+[View PR #138 ↗](https://github.com/calstar/STAR/pull/138) · [View PR #147 ↗](https://github.com/calstar/STAR/pull/147)
 
-MY WORK / AUG 2026–PRESENT
+SEP–OCT 2026 / MERGED
 
 ### Data acquisition software
 
 I built C++ support for an environmental sensor board, parsing UDP packets for temperature, humidity, and pressure telemetry. I integrated the board into STAR’s configuration, data streams, and monitoring interface. Tested in simulation; physical-board validation is pending.
 
-[View DAQ contribution ↗](https://github.com/calstar/STAR/pull/76)
+[View PR #76 ↗](https://github.com/calstar/STAR/pull/76)
 
 ## Resume
 
@@ -163,23 +163,23 @@ SUMMERS 2024 & 2025
 
 Created a balanced dataset of 40,000+ videos and images to reduce bias in an emotion-recognition model. Integrated the model into robotics applications.
 
-SELECTED PROJECT / NOV 2026
+NOV 2026 / SELECTED PROJECT
 
 ### Assurance
 
 Co-built an agent-run insurance claims advocacy firm at a hackathon, with a persistent advocate per case and company agents for intake, review, and growth.
 
-[View project on GitHub ↗](https://github.com/pranayD21/autonomouscompany)
+[View on GitHub ↗](https://github.com/pranayD21/autonomouscompany)
 
-SELECTED PROJECT / OCT 2026
+OCT 2026 / SELECTED PROJECT
 
 ### Agent Task Marketplace
 
 Built HANDOFF at Y Combinator’s Make Something Agents Want hackathon: an MCP marketplace for tasks executed by local models, with encrypted results, independent review, and test-mode payments.
 
-[View project on GitHub ↗](https://github.com/pranayD21/AgentTaskMarketplace)
+[View on GitHub ↗](https://github.com/pranayD21/AgentTaskMarketplace)
 
-TOOLS I USE
+SKILLS
 
 Python · C++ · C · Java · PyTorch · Git · Ollama · Kubernetes
 
@@ -187,7 +187,7 @@ Research roles are listed in [Research](https://pranaydogra.com/#research).
 
 ## Links
 
-[AssuranceAn agent-run insurance claims advocate↗](https://github.com/pranayD21/autonomouscompany)[Agent Task MarketplaceAgent-to-agent tasks on local models↗](https://github.com/pranayD21/AgentTaskMarketplace)[STAR flight-computer firmwareSelf-tests, health monitoring, and Ethernet↗](https://github.com/calstar/STAR/pull/138)[GitHubCode and experiments↗](https://github.com/pranayD21)[LinkedInExperience and connections↗](https://www.linkedin.com/in/pranay-dogra-896b35214/)[BabelContracts as executable state machines↗](https://github.com/neelsck/DDKT)[SLM CascadeA small-model-first inbox agent router↗](https://github.com/pranayD21/slm-agent-router)[IEEE publicationQuantifying bias in agentic LLMs↗](https://ieeexplore.ieee.org/document/10601938)[CueLens in the Midpeninsula PostThe story behind the project↗](https://midpenpost.org/2025/11/18/subtitles-but-for-facial-expressions-a-bellarmine-high-seniors-journey-innovating-to-empower-individuals-on-the-autism-spectrum/)
+[AssuranceAgent-run insurance claims advocacy↗](https://github.com/pranayD21/autonomouscompany)[Agent Task MarketplaceAgent-to-agent tasks on local models↗](https://github.com/pranayD21/AgentTaskMarketplace)[STAR flight-computer firmwareSelf-tests, health monitoring, and Ethernet↗](https://github.com/calstar/STAR/pulls?q=is%3Apr+author%3ApranayD21)[GitHubCode and experiments↗](https://github.com/pranayD21)[LinkedInExperience and connections↗](https://www.linkedin.com/in/pranay-dogra-896b35214/)[BabelContracts as executable state machines↗](https://github.com/neelsck/DDKT)[SLM CascadeSmall-model-first inbox agent router↗](https://github.com/pranayD21/slm-agent-router)[IEEE publicationQuantifying bias in agentic LLMs↗](https://ieeexplore.ieee.org/document/10601938)[CueLens in the Midpeninsula PostProfile of CueLens and how it started↗](https://midpenpost.org/2025/11/18/subtitles-but-for-facial-expressions-a-bellarmine-high-seniors-journey-innovating-to-empower-individuals-on-the-autism-spectrum/)
 
 ## Contact
 
