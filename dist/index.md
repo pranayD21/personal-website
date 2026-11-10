@@ -44,6 +44,16 @@ A benchmark examining model decisions across race, gender, age, socioeconomic st
 
 ## Projects
 
+NOV 2026 / HACKATHON
+
+### Assurance
+
+An autonomous, agent-run patient advocacy firm that files medical and workplace-injury insurance claims and disputes denials with the insurer. A customer verifies a phone number and gets an onboarding call; the transcript opens a case with its own persistent advocate, while CEO, Front Desk, Case Reviewer, Knowledge, Growth, and Finance agents run the company around it.
+
+I built most of the backend: persistent per-case agent sessions on Naïve, phone-first sign-in and onboarding calls, authorized insurer email with duplicate-send protection, source-linked evidence and outcome records, and recovery for interrupted hires and sessions. Our growth agent found our first real user on Reddit; 65 test files pass against real Postgres.
+
+[View project on GitHub ↗](https://github.com/pranayD21/autonomouscompany)
+
 OCT 2026 / YC HACKATHON
 
 ### Agent Task Marketplace
@@ -52,13 +62,13 @@ HANDOFF lets agents delegate tasks to peer machines running local models through
 
 [View project on GitHub ↗](https://github.com/pranayD21/AgentTaskMarketplace)
 
-STAR / IN REVIEW
+STAR / OCT–NOV 2026
 
-### Flight-computer self-tests
+### Flight-computer firmware
 
-A portable C coordinator with five SPI device checks, bounded retries, and heartbeat callbacks. Host tests cover corrupt replies, timeouts, and CRC validation; hardware integration is pending.
+Portable C self-tests for five SPI devices with a bounded 29-second scan, plus a health task and watchdog that survive Idle sleep, a start-up self-test radio frame, and a W5500 Ethernet path for DAQ telemetry. Host-tested; hardware validation is pending.
 
-[View contribution on GitHub ↗](https://github.com/calstar/STAR/pull/138)
+[Read about my STAR work](https://pranaydogra.com/#star)
 
 IN PROGRESS
 
@@ -95,13 +105,29 @@ UC Berkeley’s student-run rocketry team. Students design, build, and test rock
 - 27,326 ft · Caldera flight altitude, 2024
 - 6th place · IREC 2024, 30,000-foot category[Team results ↗](https://crowdfund.berkeley.edu/project/43553)
 
-OCT 2026 / IN REVIEW
+NOV 2026 / IN REVIEW
+
+### Health monitoring and watchdog
+
+A health task samples all seven ADC1 inputs (battery, main current, continuity, and altimeter current) into a fixed 25-byte log record at 10 Hz once armed. Sensor, GNSS, and storage workers check in, and the independent watchdog is refreshed only when every running worker has, including through 10-second Stop-mode sleeps. The board reports its reset cause and sends a self-test frame over the radio before its first heartbeat, with three bounded attempts. All 26 flight test stages pass; I broke 13 guarded behaviors one at a time to confirm each turns a test red.
+
+[View health and watchdog work ↗](https://github.com/calstar/STAR/pull/179)
+
+NOV 2026 / IN REVIEW
+
+### Ethernet telemetry transport
+
+The flight computer could identify its W5500 Ethernet chip but had no data path. I added a bounded UDP driver and a separate network task that sends the DAQ’s existing heartbeat and sensor packets. It discovers the ground server, ignores invalid and actuator packets, drops stale samples, and recovers from link, SPI, and cable failures. Six suites pass under ASan and UBSan, and the STM32H723 build fits in 73 KB of flash. Networking stays disabled until addressing is signed off.
+
+[View Ethernet transport ↗](https://github.com/calstar/STAR/pull/177)
+
+OCT–NOV 2026 / MERGED
 
 ### Flight-computer self-tests
 
-I built a portable C self-test coordinator and datasheet-backed SPI checks for the ISM330DHCX, H3LIS100DL, MS5611, W5500, and SX1262. It schedules probes, limits retries, and reports required and optional device results. Host tests cover CRC validation, timeouts, corrupt replies, and reset behavior. STM32 integration and hardware testing are pending.
+I built a portable C self-test coordinator and datasheet-backed SPI checks for the ISM330DHCX, H3LIS100DL, MS5611, W5500, and SX1262. It schedules probes, limits retries, and reports required and optional device results. A follow-up bounds the whole scan to 29 seconds, marks stalled devices as timed out so the board can still reach Idle, and applies the board requirements the hardware lead confirmed. I also documented how the checks fit the new radio and IMU drivers, including a reproduced IMU reset-timeout bug.
 
-[View self-test contribution ↗](https://github.com/calstar/STAR/pull/138)
+[View self-test contribution ↗](https://github.com/calstar/STAR/pull/138) [View bounded scan ↗](https://github.com/calstar/STAR/pull/147)
 
 MY WORK / AUG 2026–PRESENT
 
@@ -125,7 +151,7 @@ AUG 2026–PRESENT
 
 ### Software Engineer · Berkeley STAR
 
-Built C++ environmental sensor telemetry and a portable C flight-computer self-test coordinator with five SPI device checks. Self-tests are host-tested; hardware integration is pending.
+Built C++ environmental sensor telemetry and flight-computer firmware: a portable C self-test coordinator with five SPI device checks, a health task and watchdog that survive sleep, and a W5500 UDP telemetry transport. Host-tested; hardware validation is pending.
 
 NOV 2024–AUG 2026
 
@@ -138,6 +164,14 @@ SUMMERS 2024 & 2025
 ### Software Engineering Intern · Mirro.ai
 
 Created a balanced dataset of 40,000+ videos and images to reduce bias in an emotion-recognition model. Integrated the model into robotics applications.
+
+SELECTED PROJECT / NOV 2026
+
+### Assurance
+
+Co-built an autonomous, agent-run insurance claims advocacy firm at a hackathon. I built most of the backend: persistent per-case agents, phone-first onboarding, authorized insurer email, and evidence-backed outcome records. Its growth agent acquired our first real user.
+
+[View project on GitHub ↗](https://github.com/pranayD21/autonomouscompany)
 
 SELECTED PROJECT / OCT 2026
 
@@ -155,7 +189,7 @@ Research roles are listed in [Research](https://pranaydogra.com/#research).
 
 ## Links
 
-[Agent Task MarketplaceAgent-to-agent tasks on local models↗](https://github.com/pranayD21/AgentTaskMarketplace)[STAR flight-computer self-testsPortable C checks and host tests↗](https://github.com/calstar/STAR/pull/138)[GitHubCode and experiments↗](https://github.com/pranayD21)[LinkedInExperience and connections↗](https://www.linkedin.com/in/pranay-dogra-896b35214/)[BabelContracts as executable state machines↗](https://github.com/neelsck/DDKT)[SLM CascadeA small-model-first inbox agent router↗](https://github.com/pranayD21/slm-agent-router)[IEEE publicationQuantifying bias in agentic LLMs↗](https://ieeexplore.ieee.org/document/10601938)[CueLens in the Midpeninsula PostThe story behind the project↗](https://midpenpost.org/2025/11/18/subtitles-but-for-facial-expressions-a-bellarmine-high-seniors-journey-innovating-to-empower-individuals-on-the-autism-spectrum/)
+[AssuranceAn agent-run insurance claims advocate↗](https://github.com/pranayD21/autonomouscompany)[Agent Task MarketplaceAgent-to-agent tasks on local models↗](https://github.com/pranayD21/AgentTaskMarketplace)[STAR flight-computer firmwareSelf-tests, health monitoring, and Ethernet↗](https://github.com/calstar/STAR/pull/138)[GitHubCode and experiments↗](https://github.com/pranayD21)[LinkedInExperience and connections↗](https://www.linkedin.com/in/pranay-dogra-896b35214/)[BabelContracts as executable state machines↗](https://github.com/neelsck/DDKT)[SLM CascadeA small-model-first inbox agent router↗](https://github.com/pranayD21/slm-agent-router)[IEEE publicationQuantifying bias in agentic LLMs↗](https://ieeexplore.ieee.org/document/10601938)[CueLens in the Midpeninsula PostThe story behind the project↗](https://midpenpost.org/2025/11/18/subtitles-but-for-facial-expressions-a-bellarmine-high-seniors-journey-innovating-to-empower-individuals-on-the-autism-spectrum/)
 
 ## Contact
 

@@ -1,6 +1,6 @@
 # Pranay Dogra
 
-Personal website with a warm paper palette, animated ASCII illustrations, and short notes on engineering and research.
+Personal website with a creme and black palette, animated ASCII illustrations, and short notes on engineering and research.
 
 ## Preview locally
 
