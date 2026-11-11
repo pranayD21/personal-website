@@ -44,6 +44,14 @@ A benchmark examining model decisions across race, gender, age, socioeconomic st
 
 ## Projects
 
+NOV 2026 / BBS × RAMP HACKATHON
+
+### Blink
+
+A live compliance assistant for expert-network calls. It warns a banker when the conversation nears inside information, hides flagged passages when the call ends, and gives compliance a rule trace and audit log for every decision.
+
+[View on GitHub ↗](https://github.com/pranayD21/blink)
+
 NOV 2026 / HACKATHON
 
 ### Assurance
@@ -165,6 +173,14 @@ Created a balanced dataset of 40,000+ videos and images to reduce bias in an emo
 
 NOV 2026 / SELECTED PROJECT
 
+### Blink
+
+Co-built a live compliance assistant for expert-network calls at the Berkeley Business Society × Ramp hackathon. It flags inside information as the call happens and hides it until compliance reviews it.
+
+[View on GitHub ↗](https://github.com/pranayD21/blink)
+
+NOV 2026 / SELECTED PROJECT
+
 ### Assurance
 
 Co-built an agent-run insurance claims advocacy firm at a hackathon, with a persistent advocate per case and company agents for intake, review, and growth.
@@ -187,7 +203,7 @@ Research roles are listed in [Research](https://pranaydogra.com/#research).
 
 ## Links
 
-[AssuranceAgent-run insurance claims advocacy↗](https://github.com/pranayD21/autonomouscompany)[Agent Task MarketplaceAgent-to-agent tasks on local models↗](https://github.com/pranayD21/AgentTaskMarketplace)[STAR flight-computer firmwareSelf-tests, health monitoring, and Ethernet↗](https://github.com/calstar/STAR/pulls?q=is%3Apr+author%3ApranayD21)[GitHubCode and experiments↗](https://github.com/pranayD21)[LinkedInExperience and connections↗](https://www.linkedin.com/in/pranay-dogra-896b35214/)[BabelContracts as executable state machines↗](https://github.com/neelsck/DDKT)[SLM CascadeSmall-model-first inbox agent router↗](https://github.com/pranayD21/slm-agent-router)[IEEE publicationQuantifying bias in agentic LLMs↗](https://ieeexplore.ieee.org/document/10601938)[CueLens in the Midpeninsula PostProfile of CueLens and how it started↗](https://midpenpost.org/2025/11/18/subtitles-but-for-facial-expressions-a-bellarmine-high-seniors-journey-innovating-to-empower-individuals-on-the-autism-spectrum/)
+[BlinkLive compliance guidance for expert calls↗](https://github.com/pranayD21/blink)[AssuranceAgent-run insurance claims advocacy↗](https://github.com/pranayD21/autonomouscompany)[Agent Task MarketplaceAgent-to-agent tasks on local models↗](https://github.com/pranayD21/AgentTaskMarketplace)[STAR flight-computer firmwareSelf-tests, health monitoring, and Ethernet↗](https://github.com/calstar/STAR/pulls?q=is%3Apr+author%3ApranayD21)[GitHubCode and experiments↗](https://github.com/pranayD21)[LinkedInExperience and connections↗](https://www.linkedin.com/in/pranay-dogra-896b35214/)[BabelContracts as executable state machines↗](https://github.com/neelsck/DDKT)[SLM CascadeSmall-model-first inbox agent router↗](https://github.com/pranayD21/slm-agent-router)[IEEE publicationQuantifying bias in agentic LLMs↗](https://ieeexplore.ieee.org/document/10601938)[CueLens in the Midpeninsula PostProfile of CueLens and how it started↗](https://midpenpost.org/2025/11/18/subtitles-but-for-facial-expressions-a-bellarmine-high-seniors-journey-innovating-to-empower-individuals-on-the-autism-spectrum/)
 
 ## Contact
 
